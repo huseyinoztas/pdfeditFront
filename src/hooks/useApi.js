@@ -1,4 +1,4 @@
-const API = '/api'
+const API = import.meta.env.VITE_API_URL || '/api'
 
 export function formatBytes(bytes) {
   if (bytes < 1024) return bytes + ' B'
@@ -16,7 +16,7 @@ export function triggerDownload(blob, filename) {
 
 export async function apiPost(endpoint, formData, setLoading) {
   if (setLoading) setLoading(true)
-  
+
   try {
     const res = await fetch(`${API}/${endpoint}`, { method: 'POST', body: formData })
     if (!res.ok) {
