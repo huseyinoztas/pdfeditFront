@@ -38,6 +38,7 @@ const otherTools = [
   { path: '/pdf-to-excel', label: 'PDF → Excel' },
   { path: '/pdf-to-word', label: 'PDF → Word' },
   { path: '/compress', label: 'PDF Sıkıştır' },
+  { path: '/encrypt-pdf', label: 'PDF Şifrele' },
 ]
 
 function Merge({ showToast }) {

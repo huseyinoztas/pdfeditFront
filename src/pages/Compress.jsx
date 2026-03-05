@@ -38,6 +38,7 @@ const otherTools = [
   { path: '/jpg-to-pdf', label: 'JPG → PDF' },
   { path: '/pdf-to-excel', label: 'PDF → Excel' },
   { path: '/pdf-to-word', label: 'PDF → Word' },
+  { path: '/encrypt-pdf', label: 'PDF Şifrele' },
 ]
 
 function Compress({ showToast }) {

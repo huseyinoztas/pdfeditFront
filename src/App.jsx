@@ -10,6 +10,7 @@ import JpgToPdf from './pages/JpgToPdf'
 import PdfToExcel from './pages/PdfToExcel'
 import PdfToWord from './pages/PdfToWord'
 import Compress from './pages/Compress'
+import EncryptPdf from './pages/EncryptPdf'
 
 const tools = [
   { path: '/', label: 'Anasayfa', icon: '🏠' },
@@ -22,6 +23,7 @@ const tools = [
   { path: '/pdf-to-excel', label: 'Excel', icon: '📊' },
   { path: '/pdf-to-word', label: 'Word', icon: '📝' },
   { path: '/compress', label: 'Sıkıştır', icon: '📉' },
+  { path: '/encrypt-pdf', label: 'Şifrele', icon: '🔒' },
 ]
 
 function App() {
@@ -50,15 +52,15 @@ function App() {
             </svg>
             <span>PDF<strong>Edit</strong></span>
           </NavLink>
-          <div className="badge">🔒 100% Yerel & Gizli</div>
+          <div className="badge">🔒 100% Yerel &amp; Gizli</div>
         </div>
       </header>
 
       <nav className="nav-links">
         {tools.slice(1).map(tool => (
-          <NavLink 
-            key={tool.path} 
-            to={tool.path} 
+          <NavLink
+            key={tool.path}
+            to={tool.path}
             className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
             end={tool.path === '/'}
           >
@@ -79,6 +81,7 @@ function App() {
         <Route path="/pdf-to-excel" element={<PdfToExcel showToast={showToast} />} />
         <Route path="/pdf-to-word" element={<PdfToWord showToast={showToast} />} />
         <Route path="/compress" element={<Compress showToast={showToast} />} />
+        <Route path="/encrypt-pdf" element={<EncryptPdf showToast={showToast} />} />
       </Routes>
 
       {/* Mobile Navigation */}
@@ -86,8 +89,8 @@ function App() {
         <ul className="mobile-nav-items">
           {tools.map(tool => (
             <li key={tool.path}>
-              <NavLink 
-                to={tool.path} 
+              <NavLink
+                to={tool.path}
                 className={({ isActive }) => `mobile-nav-item ${isActive ? 'active' : ''}`}
                 end={tool.path === '/'}
               >

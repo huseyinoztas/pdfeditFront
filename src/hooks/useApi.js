@@ -31,3 +31,24 @@ export async function apiPost(endpoint, formData, setLoading) {
     if (setLoading) setLoading(false)
   }
 }
+
+export async function apiPostJson(endpoint, jsonBody, setLoading) {
+  if (setLoading) setLoading(true)
+  try {
+    const res = await fetch(`${API}/${endpoint}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(jsonBody),
+    })
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({ detail: 'Bilinmeyen hata' }))
+      throw new Error(err.detail || 'Sunucu hatası')
+    }
+    const blob = await res.blob()
+    return { success: true, blob }
+  } catch (e) {
+    return { success: false, error: e.message }
+  } finally {
+    if (setLoading) setLoading(false)
+  }
+}

@@ -13,6 +13,7 @@ const tools = [
   { path: '/pdf-to-excel', icon: '📊', title: 'PDF to Excel', description: 'PDF tablolarını Excel elektronik tablosuna dönüştürün.' },
   { path: '/pdf-to-word', icon: '📝', title: 'PDF to Word', description: 'PDF içeriğini düzenlenebilir Word belgesine aktarın.' },
   { path: '/compress', icon: '📉', title: 'PDF Sıkıştır', description: 'PDF dosya boyutunu görüntü kalitesini optimize ederek azaltın.' },
+  { path: '/encrypt-pdf', icon: '🔒', title: 'PDF Şifrele', description: 'PDF dosyanızı parola ile koruyun. AES-256 şifreleme.' },
 ]
 
 const schema = {
@@ -36,7 +37,7 @@ const schema = {
       description: '9 farklı PDF aracı: birleştir, böl, döndür, sıkıştır, JPG/Excel/Word dönüştür. Dosyalar sunucuya yüklenmez.',
       featureList: [
         'PDF Birleştir', 'PDF Böl', 'Sayfa Çıkar', 'Sayfa Döndür',
-        'PDF to JPG', 'JPG to PDF', 'PDF to Excel', 'PDF to Word', 'PDF Sıkıştır',
+        'PDF to JPG', 'JPG to PDF', 'PDF to Excel', 'PDF to Word', 'PDF Sıkıştır', 'PDF Şifrele',
       ],
     },
     {
@@ -55,7 +56,7 @@ const schema = {
         {
           '@type': 'Question',
           name: 'Hangi PDF işlemlerini yapabilirim?',
-          acceptedAnswer: { '@type': 'Answer', text: 'PDF birleştirme, bölme, sayfa çıkarma, döndürme, sıkıştırma, PDF-JPG, JPG-PDF, PDF-Excel ve PDF-Word dönüşümü yapabilirsiniz.' },
+          acceptedAnswer: { '@type': 'Answer', text: 'PDF birleştirme, bölme, sayfa çıkarma, döndürme, sıkıştırma, şifreleme (AES-256), PDF-JPG, JPG-PDF, PDF-Excel ve PDF-Word dönüşümü yapabilirsiniz.' },
         },
         {
           '@type': 'Question',
@@ -139,7 +140,7 @@ function Dashboard() {
             {[
               { q: 'PDFEdit tamamen ücretsiz mi?', a: 'Evet. Tüm araçlar tamamen ücretsizdir. Kayıt veya ödeme gerekmez; direkt kullanmaya başlayabilirsiniz.' },
               { q: 'Dosyalarım sunucuya yükleniyor mu?', a: 'Hayır. Tüm PDF işlemleri doğrudan tarayıcınızda gerçekleşir. Dosyanız hiçbir zaman sunucuya gönderilmez; gizliliğiniz %100 korunur.' },
-              { q: 'Hangi PDF işlemlerini yapabilirim?', a: 'PDF birleştirme, bölme, sayfa çıkarma, döndürme, sıkıştırma, PDF → JPG, JPG → PDF, PDF → Excel ve PDF → Word dönüşümü yapabilirsiniz.' },
+              { q: 'Hangi PDF işlemlerini yapabilirim?', a: 'PDF birleştirme, bölme, sayfa çıkarma, döndürme, sıkıştırma, şifreleme (AES-256), PDF → JPG, JPG → PDF, PDF → Excel ve PDF → Word dönüşümü yapabilirsiniz.' },
               { q: 'Dosya boyutu sınırı var mı?', a: 'İşlemler yerel olarak gerçekleştiğinden boyut sınırı tarayıcınızın belleğiyle sınırlıdır. Genellikle 100 MB\'a kadar sorunsuz çalışır.' },
               { q: 'Hesap oluşturmam gerekiyor mu?', a: 'Hayır. Hiçbir araç için kayıt veya giriş gerekmez. Siteye girdiğiniz anda tüm araçları kullanabilirsiniz.' },
             ].map(({ q, a }, i) => (
