@@ -9,12 +9,12 @@ const schema = {
     '@graph': [
         {
             '@type': 'SoftwareApplication',
-            name: 'PDF Şifrele — PDFEdit',
+            name: 'PDF Şifre Kaldır — PDFEdit',
             applicationCategory: 'UtilitiesApplication',
             operatingSystem: 'Web',
-            url: 'https://pdfedit.com.tr/pdf-sifrele',
+            url: 'https://pdfedit.com.tr/pdf-sifre-kaldir',
             offers: { '@type': 'Offer', price: '0', priceCurrency: 'TRY' },
-            description: 'PDF dosyanızı parola ile şifreleyin. AES-256 şifreleme. Ücretsiz, yerel, kayıt gerektirmez.',
+            description: 'Şifreli PDF dosyanızın parolasını kaldırın. Ücretsiz, yerel, kayıt gerektirmez.',
         },
     ],
 }
@@ -29,24 +29,24 @@ const otherTools = [
     { path: '/pdf-excel-donustur', label: 'PDF → Excel' },
     { path: '/pdf-word-donustur', label: 'PDF → Word' },
     { path: '/pdf-sikistir', label: 'PDF Sıkıştır' },
-    { path: '/pdf-sifre-kaldir', label: 'PDF Şifre Kaldır' },
+    { path: '/pdf-sifrele', label: 'PDF Şifrele' },
 ]
 
-function EncryptPdf({ showToast }) {
+function DecryptPdf({ showToast }) {
     const [files, setFiles] = useState([])
     const [password, setPassword] = useState('')
     const [showPw, setShowPw] = useState(false)
     const [loading, setLoading] = useState(false)
 
-    const handleEncrypt = async () => {
+    const handleDecrypt = async () => {
         if (files.length === 0 || !password) return
         const formData = new FormData()
         formData.append('file', files[0])
         formData.append('password', password)
-        const result = await apiPost('encrypt-pdf', formData, setLoading)
+        const result = await apiPost('decrypt-pdf', formData, setLoading)
         if (result.success) {
-            triggerDownload(result.blob, 'sifrelenmis.pdf')
-            showToast('✓ sifrelenmis.pdf indirildi!', 'success')
+            triggerDownload(result.blob, 'sifresi_kaldirilmis.pdf')
+            showToast('✓ sifresi_kaldirilmis.pdf indirildi!', 'success')
         } else {
             showToast(`✗ ${result.error}`, 'error')
         }
@@ -55,33 +55,26 @@ function EncryptPdf({ showToast }) {
     return (
         <div className="page-container">
             <SEO
-                title="PDF Şifrele — Parola ile PDF Koruma"
-                description="PDF dosyanızı parola ile şifreleyin. AES-256 şifreleme. Ücretsiz, yerel çalışır."
-                canonical="/pdf-sifrele"
+                title="PDF Şifre Kaldır — Şifreli PDF'i Aç"
+                description="Şifreli PDF dosyanızın parolasını kaldırın. Ücretsiz, yerel çalışır."
+                canonical="/pdf-sifre-kaldir"
                 schema={schema}
             />
 
             <header className="page-header">
-                <h1>PDF Şifrele</h1>
-                <p>PDF dosyanızı parola ile koruyun — ücretsiz, tarayıcınızda çalışır.</p>
+                <h1>PDF Şifre Kaldır</h1>
+                <p>Şifreli PDF dosyanızın parolasını kaldırın — ücretsiz ve yerel.</p>
             </header>
 
             <div className="card">
-                <DropZone
-                    files={files}
-                    setFiles={setFiles}
-                    multiple={false}
-                    icon="🔒"
-                    title="PDF dosyanızı buraya sürükleyin"
-                />
-
+                <DropZone files={files} setFiles={setFiles} multiple={false} icon="🔓" title="Şifreli PDF dosyanızı buraya sürükleyin" />
                 {files.length > 0 && (
                     <div className="form-group" style={{ marginTop: '1rem' }}>
-                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>Parola</label>
+                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>Mevcut Parola</label>
                         <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
                             <input
                                 type={showPw ? 'text' : 'password'}
-                                placeholder="Güçlü bir parola girin…"
+                                placeholder="PDF'in mevcut parolasını girin…"
                                 value={password}
                                 onChange={e => setPassword(e.target.value)}
                                 style={{
@@ -96,47 +89,21 @@ function EncryptPdf({ showToast }) {
                                     boxSizing: 'border-box',
                                 }}
                             />
-                            <button
-                                type="button"
-                                onClick={() => setShowPw(v => !v)}
-                                style={{
-                                    position: 'absolute',
-                                    right: '0.75rem',
-                                    background: 'none',
-                                    border: 'none',
-                                    cursor: 'pointer',
-                                    fontSize: '1.1rem',
-                                    color: 'var(--text-muted)',
-                                    padding: 0,
-                                }}
-                                title={showPw ? 'Gizle' : 'Göster'}
-                            >
+                            <button type="button" onClick={() => setShowPw(v => !v)} style={{ position: 'absolute', right: '0.75rem', background: 'none', border: 'none', cursor: 'pointer' }}>
                                 {showPw ? '🙈' : '👁️'}
                             </button>
                         </div>
                     </div>
                 )}
-
                 <button
                     className={`btn btn-primary ${loading ? 'loading' : ''}`}
-                    onClick={handleEncrypt}
+                    onClick={handleDecrypt}
                     disabled={files.length === 0 || !password || loading}
                     style={{ marginTop: '1rem' }}
                 >
-                    🔒 PDF'i Şifrele ve İndir
+                    🔓 Şifreyi Kaldır ve İndir
                 </button>
             </div>
-
-            <section className="how-section">
-                <div className="how-inner">
-                    <h2>Nasıl Şifrelenir?</h2>
-                    <ol className="how-steps">
-                        <li className="how-step"><h3>Dosyayı Ekleyin</h3></li>
-                        <li className="how-step"><h3>Parolayı Girin</h3></li>
-                        <li className="how-step"><h3>İndirin</h3></li>
-                    </ol>
-                </div>
-            </section>
 
             <section className="internal-links">
                 <h2>Diğer PDF Araçları</h2>
@@ -148,4 +115,4 @@ function EncryptPdf({ showToast }) {
     )
 }
 
-export default EncryptPdf
+export default DecryptPdf

@@ -11,19 +11,21 @@ import PdfToExcel from './pages/PdfToExcel'
 import PdfToWord from './pages/PdfToWord'
 import Compress from './pages/Compress'
 import EncryptPdf from './pages/EncryptPdf'
+import DecryptPdf from './pages/DecryptPdf'
 
 const tools = [
   { path: '/', label: 'Anasayfa', icon: '🏠' },
-  { path: '/merge', label: 'Birleştir', icon: '📄' },
-  { path: '/split', label: 'Böl', icon: '✂️' },
-  { path: '/extract', label: 'Çıkar', icon: '📋' },
-  { path: '/rotate', label: 'Döndür', icon: '🔄' },
-  { path: '/pdf-to-jpg', label: 'PDF-JPG', icon: '🖼️' },
-  { path: '/jpg-to-pdf', label: 'JPG-PDF', icon: '📷' },
-  { path: '/pdf-to-excel', label: 'Excel', icon: '📊' },
-  { path: '/pdf-to-word', label: 'Word', icon: '📝' },
-  { path: '/compress', label: 'Sıkıştır', icon: '📉' },
-  { path: '/encrypt-pdf', label: 'Şifrele', icon: '🔒' },
+  { path: '/pdf-birlestirme', label: 'Birleştir', icon: '📄' },
+  { path: '/pdf-bolme', label: 'Böl', icon: '✂️' },
+  { path: '/sayfa-cikar', label: 'Çıkar', icon: '📋' },
+  { path: '/sayfa-dondur', label: 'Döndür', icon: '🔄' },
+  { path: '/pdf-jpg-donustur', label: 'PDF-JPG', icon: '🖼️' },
+  { path: '/jpg-pdf-donustur', label: 'JPG-PDF', icon: '📷' },
+  { path: '/pdf-excel-donustur', label: 'Excel', icon: '📊' },
+  { path: '/pdf-word-donustur', label: 'Word', icon: '📝' },
+  { path: '/pdf-sikistir', label: 'Sıkıştır', icon: '📉' },
+  { path: '/pdf-sifrele', label: 'Şifrele', icon: '🔒' },
+  { path: '/pdf-sifre-kaldir', label: 'Şifre Kaldır', icon: '🔓' },
 ]
 
 function App() {
@@ -72,16 +74,17 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        <Route path="/merge" element={<Merge showToast={showToast} />} />
-        <Route path="/split" element={<Split showToast={showToast} />} />
-        <Route path="/extract" element={<Extract showToast={showToast} />} />
-        <Route path="/rotate" element={<Rotate showToast={showToast} />} />
-        <Route path="/pdf-to-jpg" element={<PdfToJpg showToast={showToast} />} />
-        <Route path="/jpg-to-pdf" element={<JpgToPdf showToast={showToast} />} />
-        <Route path="/pdf-to-excel" element={<PdfToExcel showToast={showToast} />} />
-        <Route path="/pdf-to-word" element={<PdfToWord showToast={showToast} />} />
-        <Route path="/compress" element={<Compress showToast={showToast} />} />
-        <Route path="/encrypt-pdf" element={<EncryptPdf showToast={showToast} />} />
+        <Route path="/pdf-birlestirme" element={<Merge showToast={showToast} />} />
+        <Route path="/pdf-bolme" element={<Split showToast={showToast} />} />
+        <Route path="/sayfa-cikar" element={<Extract showToast={showToast} />} />
+        <Route path="/sayfa-dondur" element={<Rotate showToast={showToast} />} />
+        <Route path="/pdf-jpg-donustur" element={<PdfToJpg showToast={showToast} />} />
+        <Route path="/jpg-pdf-donustur" element={<JpgToPdf showToast={showToast} />} />
+        <Route path="/pdf-excel-donustur" element={<PdfToExcel showToast={showToast} />} />
+        <Route path="/pdf-word-donustur" element={<PdfToWord showToast={showToast} />} />
+        <Route path="/pdf-sikistir" element={<Compress showToast={showToast} />} />
+        <Route path="/pdf-sifrele" element={<EncryptPdf showToast={showToast} />} />
+        <Route path="/pdf-sifre-kaldir" element={<DecryptPdf showToast={showToast} />} />
       </Routes>
 
       {/* Mobile Navigation */}

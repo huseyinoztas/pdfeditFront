@@ -4,16 +4,17 @@ import SEO from '../components/SEO'
 const BASE = 'https://pdfedit.com.tr'
 
 const tools = [
-  { path: '/merge', icon: '📄', title: 'PDF Birleştir', description: 'Birden fazla PDF dosyasını tek bir belgede birleştirin.' },
-  { path: '/split', icon: '✂️', title: 'PDF Böl', description: 'PDF dosyanızı her sayfası ayrı bir dosya olacak şekilde bölün.' },
-  { path: '/extract', icon: '📋', title: 'Sayfa Çıkar', description: 'Belirli sayfaları çıkararak yeni bir PDF oluşturun.' },
-  { path: '/rotate', icon: '🔄', title: 'Sayfa Döndür', description: 'PDF sayfalarını 90°, 180° veya 270° döndürün.' },
-  { path: '/pdf-to-jpg', icon: '🖼️', title: 'PDF to JPG', description: 'PDF sayfalarını yüksek kaliteli JPG görüntülerine dönüştürün.' },
-  { path: '/jpg-to-pdf', icon: '📷', title: 'JPG to PDF', description: 'Resimlerinizi tek bir PDF belgesi haline getirin.' },
-  { path: '/pdf-to-excel', icon: '📊', title: 'PDF to Excel', description: 'PDF tablolarını Excel elektronik tablosuna dönüştürün.' },
-  { path: '/pdf-to-word', icon: '📝', title: 'PDF to Word', description: 'PDF içeriğini düzenlenebilir Word belgesine aktarın.' },
-  { path: '/compress', icon: '📉', title: 'PDF Sıkıştır', description: 'PDF dosya boyutunu görüntü kalitesini optimize ederek azaltın.' },
-  { path: '/encrypt-pdf', icon: '🔒', title: 'PDF Şifrele', description: 'PDF dosyanızı parola ile koruyun. AES-256 şifreleme.' },
+  { path: '/pdf-birlestirme', icon: '📄', title: 'PDF Birleştir', description: 'Birden fazla PDF dosyasını tek bir belgede birleştirin.' },
+  { path: '/pdf-bolme', icon: '✂️', title: 'PDF Böl', description: 'PDF dosyanızı her sayfası ayrı bir dosya olacak şekilde bölün.' },
+  { path: '/sayfa-cikar', icon: '📋', title: 'Sayfa Çıkar', description: 'Belirli sayfaları çıkararak yeni bir PDF oluşturun.' },
+  { path: '/sayfa-dondur', icon: '🔄', title: 'Sayfa Döndür', description: 'PDF sayfalarını 90°, 180° veya 270° döndürün.' },
+  { path: '/pdf-jpg-donustur', icon: '🖼️', title: 'PDF to JPG', description: 'PDF sayfalarını yüksek kaliteli JPG görüntülerine dönüştürün.' },
+  { path: '/jpg-pdf-donustur', icon: '📷', title: 'JPG to PDF', description: 'Resimlerinizi tek bir PDF belgesi haline getirin.' },
+  { path: '/pdf-excel-donustur', icon: '📊', title: 'PDF to Excel', description: 'PDF tablolarını Excel elektronik tablosuna dönüştürün.' },
+  { path: '/pdf-word-donustur', icon: '📝', title: 'PDF to Word', description: 'PDF içeriğini düzenlenebilir Word belgesine aktarın.' },
+  { path: '/pdf-sikistir', icon: '📉', title: 'PDF Sıkıştır', description: 'PDF dosya boyutunu görüntü kalitesini optimize ederek azaltın.' },
+  { path: '/pdf-sifrele', icon: '🔒', title: 'PDF Şifrele', description: 'PDF dosyanızı parola ile koruyun. AES-256 şifreleme.' },
+  { path: '/pdf-sifre-kaldir', icon: '🔓', title: 'PDF Şifre Kaldır', description: 'Şifreli PDF\'nizin parolasını kaldırın. Doğru parolayla şifresiz kopya çıkarın.' },
 ]
 
 const schema = {
@@ -34,10 +35,11 @@ const schema = {
       operatingSystem: 'Web',
       url: BASE,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'TRY' },
-      description: '9 farklı PDF aracı: birleştir, böl, döndür, sıkıştır, JPG/Excel/Word dönüştür. Dosyalar sunucuya yüklenmez.',
+      description: '11 farklı PDF aracı: birleştir, böl, döndür, sıkıştır, şifrele, JPG/Excel/Word dönüştür. Dosyalar sunucuya yüklenmez.',
       featureList: [
         'PDF Birleştir', 'PDF Böl', 'Sayfa Çıkar', 'Sayfa Döndür',
-        'PDF to JPG', 'JPG to PDF', 'PDF to Excel', 'PDF to Word', 'PDF Sıkıştır', 'PDF Şifrele',
+        'PDF to JPG', 'JPG to PDF', 'PDF to Excel', 'PDF to Word',
+        'PDF Sıkıştır', 'PDF Şifrele', 'PDF Şifre Kaldır',
       ],
     },
     {
@@ -56,7 +58,7 @@ const schema = {
         {
           '@type': 'Question',
           name: 'Hangi PDF işlemlerini yapabilirim?',
-          acceptedAnswer: { '@type': 'Answer', text: 'PDF birleştirme, bölme, sayfa çıkarma, döndürme, sıkıştırma, şifreleme (AES-256), PDF-JPG, JPG-PDF, PDF-Excel ve PDF-Word dönüşümü yapabilirsiniz.' },
+          acceptedAnswer: { '@type': 'Answer', text: 'PDF birleştirme, bölme, sayfa çıkarma, döndürme, sıkıştırma, şifreleme (AES-256), şifre kaldırma, PDF → JPG, JPG → PDF, PDF → Excel ve PDF → Word dönüşümü yapabilirsiniz.' },
         },
         {
           '@type': 'Question',
@@ -78,7 +80,7 @@ function Dashboard() {
     <>
       <SEO
         title="Ücretsiz PDF Araçları — Birleştir, Böl, Dönüştür"
-        description="PDF birleştir, böl, döndür, sıkıştır, JPG/Excel/Word'e dönüştür. Tamamen ücretsiz, yerel çalışır — hiçbir dosya sunucuya yüklenmez."
+        description="PDF birleştir, böl, döndür, sıkıştır, şifrele, JPG/Excel/Word'e dönüştür. Tamamen ücretsiz, yerel çalışır — hiçbir dosya sunucuya yüklenmez."
         canonical="/"
         schema={schema}
       />
@@ -140,7 +142,7 @@ function Dashboard() {
             {[
               { q: 'PDFEdit tamamen ücretsiz mi?', a: 'Evet. Tüm araçlar tamamen ücretsizdir. Kayıt veya ödeme gerekmez; direkt kullanmaya başlayabilirsiniz.' },
               { q: 'Dosyalarım sunucuya yükleniyor mu?', a: 'Hayır. Tüm PDF işlemleri doğrudan tarayıcınızda gerçekleşir. Dosyanız hiçbir zaman sunucuya gönderilmez; gizliliğiniz %100 korunur.' },
-              { q: 'Hangi PDF işlemlerini yapabilirim?', a: 'PDF birleştirme, bölme, sayfa çıkarma, döndürme, sıkıştırma, şifreleme (AES-256), PDF → JPG, JPG → PDF, PDF → Excel ve PDF → Word dönüşümü yapabilirsiniz.' },
+              { q: 'Hangi PDF işlemlerini yapabilirim?', a: 'PDF birleştirme, bölme, sayfa çıkarma, döndürme, sıkıştırma, şifreleme (AES-256), şifre kaldırma, PDF → JPG, JPG → PDF, PDF → Excel ve PDF → Word dönüşümü yapabilirsiniz.' },
               { q: 'Dosya boyutu sınırı var mı?', a: 'İşlemler yerel olarak gerçekleştiğinden boyut sınırı tarayıcınızın belleğiyle sınırlıdır. Genellikle 100 MB\'a kadar sorunsuz çalışır.' },
               { q: 'Hesap oluşturmam gerekiyor mu?', a: 'Hayır. Hiçbir araç için kayıt veya giriş gerekmez. Siteye girdiğiniz anda tüm araçları kullanabilirsiniz.' },
             ].map(({ q, a }, i) => (
