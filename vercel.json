@@ -7,7 +7,7 @@
     ],
     "headers": [
         {
-            "source": "/(.*\\.(ico|jpg|png|svg|webp|pdf|otf|ttf|woff|woff2|css|js))",
+            "source": "/static/(.*)",
             "headers": [
                 {
                     "key": "Cache-Control",
