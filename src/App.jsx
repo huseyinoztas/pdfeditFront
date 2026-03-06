@@ -1,5 +1,5 @@
-import { Routes, Route, NavLink } from 'react-router-dom'
-import { useState } from 'react'
+import { Routes, Route, NavLink, useLocation } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import Dashboard from './pages/Dashboard'
 import Merge from './pages/Merge'
 import Split from './pages/Split'
@@ -29,7 +29,16 @@ const tools = [
 ]
 
 function App() {
+  const location = useLocation()
   const [toast, setToast] = useState({ show: false, message: '', type: 'success' })
+
+  useEffect(() => {
+    if (window.gtag) {
+      window.gtag('config', 'G-NK753E8XJ1', {
+        page_path: location.pathname,
+      });
+    }
+  }, [location]);
 
   const showToast = (message, type = 'success') => {
     setToast({ show: true, message, type })
