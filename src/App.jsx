@@ -119,6 +119,13 @@ function App() {
       </div>
 
       <footer className="footer">
+        <div className="footer-links" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '15px', marginBottom: '15px', fontSize: '0.9rem' }}>
+          {tools.slice(1).map(tool => (
+            <NavLink key={tool.path} to={tool.path} style={{ color: 'inherit', textDecoration: 'none' }}>
+              {tool.label}
+            </NavLink>
+          ))}
+        </div>
         <p>PDFEdit tamamen bilgisayarınızda çalışır. Dosyalarınız hiçbir yere yüklenmez.</p>
       </footer>
     </>

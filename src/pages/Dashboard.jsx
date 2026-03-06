@@ -79,16 +79,16 @@ function Dashboard() {
   return (
     <>
       <SEO
-        title="Ücretsiz PDF Araçları — Birleştir, Böl, Dönüştür"
-        description="PDF birleştir, böl, döndür, sıkıştır, şifrele, JPG/Excel/Word'e dönüştür. Tamamen ücretsiz, yerel çalışır — hiçbir dosya sunucuya yüklenmez."
+        title="Ücretsiz Online PDF Düzenleyici ve Araçları | PDFEdit"
+        description="PDF birleştirme, bölme, PDF sıkıştırma, şifreleme ve PDF'ten JPG, Excel, Word'e dönüştürme işlemleri. Tamamen ücretsiz, güvenli online PDF düzenleyici."
         canonical="/"
         schema={schema}
       />
 
       {/* ── Hero ── */}
       <section className="hero">
-        <h1>PDF araç setiniz, <span className="gradient-text">tamamen gizli</span></h1>
-        <p>Tüm işlemler bilgisayarınızda gerçekleşir. Yükleme yok. Hesap yok. Bulut yok.</p>
+        <h1>Ücretsiz Online PDF Düzenleyici <span className="gradient-text">ve Araçları</span></h1>
+        <p>PDF birleştirme, bölme ve dönüştürme işlemleriniz için %100 yerel, ücretsiz, güvenli çözüm.</p>
       </section>
 
       {/* ── Araçlar ── */}

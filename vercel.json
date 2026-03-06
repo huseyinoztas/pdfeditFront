@@ -4,5 +4,29 @@
             "source": "/(.*)",
             "destination": "/index.html"
         }
+    ],
+    "headers": [
+        {
+            "source": "/(.*\\.(ico|jpg|png|svg|webp|pdf|otf|ttf|woff|woff2|css|js))",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=31536000, immutable"
+                }
+            ]
+        }
+    ],
+    "redirects": [
+        {
+            "source": "/(.*)",
+            "has": [
+                {
+                    "type": "host",
+                    "value": "www.pdfedit.com.tr"
+                }
+            ],
+            "destination": "https://pdfedit.com.tr/$1",
+            "permanent": true
+        }
     ]
 }
