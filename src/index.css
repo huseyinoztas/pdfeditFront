@@ -604,7 +604,6 @@ body {
   }
 }
 
-/* ── Hamburger Menu Button ────────────────────────────────────────────── */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -616,7 +615,12 @@ body {
   cursor: pointer;
   padding: 0;
   z-index: 1001;
-  /* Above overlay */
+}
+
+.header-actions {
+  display: flex !important;
+  align-items: center;
+  gap: 12px;
 }
 
 .hamburger .bar {
@@ -744,7 +748,7 @@ body {
 
 @media (max-width: 768px) {
   .hamburger {
-    display: flex;
+    display: flex !important;
   }
 }
 
