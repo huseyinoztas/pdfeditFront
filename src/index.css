@@ -91,7 +91,7 @@ body {
   padding: 4px 12px;
 }
 
-/* ── Navigation ───────────────────────────────────────────────────────── */
+/* ── Navigation (Desktop) ─────────────────────────────────────────── */
 .nav-links {
   max-width: 1200px;
   margin: 0 auto;
@@ -564,12 +564,18 @@ body {
 /* ── Responsive ───────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .header-inner {
-    padding: 0 16px;
-    height: 60px;
+    padding: 0 16px !important;
+    height: 60px !important;
   }
 
   .nav-links {
+    display: none !important;
+    /* Force hide old menu */
+  }
+
+  .badge {
     display: none;
+    /* Hide badge on mobile to save space */
   }
 }
 
@@ -584,23 +590,12 @@ body {
   }
 
   .hero {
-    padding: 32px 16px 24px;
+    padding: 24px 16px 16px;
+    /* Reduced padding */
   }
 
   .page-container {
-    padding: 24px 16px 48px;
-  }
-
-  .drop-zone {
-    padding: 30px 16px;
-  }
-
-  .angle-group {
-    flex-direction: column;
-  }
-
-  .angle-option {
-    min-width: auto;
+    padding: 16px 16px 40px;
   }
 }
 
