@@ -30,7 +30,13 @@ const tools = [
 
 function App() {
   const location = useLocation()
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [toast, setToast] = useState({ show: false, message: '', type: 'success' })
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false)
+  }, [location])
 
   useEffect(() => {
     if (window.gtag) {
@@ -76,7 +82,18 @@ function App() {
             </svg>
             <span>PDF<strong>Edit</strong></span>
           </NavLink>
-          <div className="badge">🔒 100% Yerel &amp; Gizli</div>
+          <div className="header-actions">
+            <div className="badge">🔒 100% Yerel &amp; Gizli</div>
+            <button
+              className={`hamburger ${isMobileMenuOpen ? 'active' : ''}`}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Menü"
+            >
+              <span className="bar"></span>
+              <span className="bar"></span>
+              <span className="bar"></span>
+            </button>
+          </div>
         </div>
       </header>
 
@@ -109,18 +126,24 @@ function App() {
         <Route path="/pdf-sifre-kaldir" element={<DecryptPdf showToast={showToast} />} />
       </Routes>
 
-      {/* Mobile Navigation */}
-      <nav className="mobile-nav">
-        <ul className="mobile-nav-items">
+      {/* Mobile Sidebar Navigation */}
+      <div className={`mobile-overlay ${isMobileMenuOpen ? 'visible' : ''}`} onClick={() => setIsMobileMenuOpen(false)}></div>
+      <nav className={`mobile-sidebar ${isMobileMenuOpen ? 'open' : ''}`}>
+        <div className="mobile-sidebar-header">
+          <h2>Menü</h2>
+          <button className="close-sidebar" onClick={() => setIsMobileMenuOpen(false)}>✕</button>
+        </div>
+        <ul className="mobile-sidebar-items">
           {tools.map(tool => (
             <li key={tool.path}>
               <NavLink
                 to={tool.path}
-                className={({ isActive }) => `mobile-nav-item ${isActive ? 'active' : ''}`}
+                className={({ isActive }) => `mobile-sidebar-link ${isActive ? 'active' : ''}`}
                 end={tool.path === '/'}
+                onClick={() => setIsMobileMenuOpen(false)}
               >
-                <span style={{ fontSize: '1.2rem' }}>{tool.icon}</span>
-                <span>{tool.label}</span>
+                <span className="icon">{tool.icon}</span>
+                <span className="text">{tool.label}</span>
               </NavLink>
             </li>
           ))}
