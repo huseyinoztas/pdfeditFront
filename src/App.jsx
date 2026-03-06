@@ -40,6 +40,19 @@ function App() {
     }
   }, [location]);
 
+  // Backend pinger (Cold start uykusunu engellemek için)
+  useEffect(() => {
+    const apiUrl = import.meta.env.VITE_API_URL || '/api';
+    const pingBackend = () => fetch(`${apiUrl}/health`).catch(() => { });
+
+    // İlk açılışta uyandır
+    pingBackend();
+
+    // Sekme açık kaldıkça her 5 dakikada bir yokla
+    const intervalId = setInterval(pingBackend, 5 * 60 * 1000);
+    return () => clearInterval(intervalId);
+  }, []);
+
   const showToast = (message, type = 'success') => {
     setToast({ show: true, message, type })
     setTimeout(() => setToast({ show: false, message: '', type: 'success' }), 3500)
