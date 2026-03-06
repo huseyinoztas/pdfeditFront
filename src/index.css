@@ -1,3 +1,4 @@
+/* ── Update: 2026-03-06 10:48 (Cache Busting) ────────────────────── */
 /* ── Reset & Base ─────────────────────────────────────────────────────── */
 *,
 *::before,
@@ -603,26 +604,31 @@ body {
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  width: 24px;
-  height: 18px;
-  background: transparent;
-  border: none;
+  width: 26px !important;
+  height: 20px !important;
+  background: transparent !important;
+  border: none !important;
   cursor: pointer;
   padding: 0;
-  z-index: 1001;
+  z-index: 2000 !important;
+  /* Extremely high */
+  position: relative;
 }
 
 .header-actions {
   display: flex !important;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
+  z-index: 1001;
 }
 
 .hamburger .bar {
-  width: 100%;
-  height: 2px;
-  background-color: var(--text);
-  border-radius: 2px;
+  width: 100% !important;
+  height: 3px !important;
+  /* Thicker bars */
+  background-color: var(--purple) !important;
+  /* Use purple instead of text for better visibility */
+  border-radius: 4px;
   transition: all 0.3s ease-in-out;
 }
 
