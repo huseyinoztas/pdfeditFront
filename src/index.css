@@ -564,23 +564,11 @@ body {
 /* ── Responsive ───────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .header-inner {
-    flex-direction: column;
-    height: auto;
-    padding: 16px 24px;
-    gap: 12px;
+    padding: 0 16px;
+    height: 60px;
   }
 
   .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .nav-link {
-    padding: 6px 10px;
-    font-size: 0.8rem;
-  }
-
-  .nav-link span {
     display: none;
   }
 }
@@ -627,7 +615,8 @@ body {
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 1001; /* Above overlay */
+  z-index: 1001;
+  /* Above overlay */
 }
 
 .hamburger .bar {
@@ -674,7 +663,8 @@ body {
 .mobile-sidebar {
   position: fixed;
   top: 0;
-  right: 0; /* Slide from right */
+  right: 0;
+  /* Slide from right */
   bottom: 0;
   width: 280px;
   max-width: 80vw;
@@ -734,7 +724,8 @@ body {
   transition: background 0.2s, color 0.2s;
 }
 
-.mobile-sidebar-link:hover, .mobile-sidebar-link:active {
+.mobile-sidebar-link:hover,
+.mobile-sidebar-link:active {
   background: var(--surface2);
 }
 
@@ -756,6 +747,7 @@ body {
     display: flex;
   }
 }
+
 /* ── Tool Card h2 fix (dashboard uses h2 inside cards now) ────────────── */
 .tool-card h2 {
   font-size: 1.1rem;
@@ -767,26 +759,30 @@ body {
 .how-section {
   margin-top: 48px;
 }
+
 .how-inner {
   max-width: 900px;
   margin: 0 auto;
   padding: 0 24px;
 }
-.how-inner > h2,
-.faq-inner > h2,
-.internal-links > h2 {
+
+.how-inner>h2,
+.faq-inner>h2,
+.internal-links>h2 {
   font-size: 1.4rem;
   font-weight: 700;
   letter-spacing: -0.03em;
   margin-bottom: 24px;
   color: var(--text);
 }
+
 .how-steps {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
+
 .how-step {
   display: flex;
   align-items: flex-start;
@@ -795,8 +791,9 @@ body {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 24px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
+
 .how-num {
   flex-shrink: 0;
   width: 36px;
@@ -810,12 +807,14 @@ body {
   font-weight: 700;
   font-size: 0.95rem;
 }
+
 .how-step h3 {
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 6px;
   color: var(--text);
 }
+
 .how-step p {
   font-size: 0.875rem;
   color: var(--muted);
@@ -827,16 +826,19 @@ body {
   margin-top: 48px;
   margin-bottom: 16px;
 }
+
 .faq-inner {
   max-width: 900px;
   margin: 0 auto;
   padding: 0 24px;
 }
+
 .faq-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
+
 .faq-item {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -844,9 +846,11 @@ body {
   overflow: hidden;
   transition: border-color .2s;
 }
+
 .faq-item[open] {
   border-color: var(--purple);
 }
+
 .faq-q {
   font-size: 0.95rem;
   font-weight: 600;
@@ -859,7 +863,11 @@ body {
   align-items: center;
   user-select: none;
 }
-.faq-q::-webkit-details-marker { display: none; }
+
+.faq-q::-webkit-details-marker {
+  display: none;
+}
+
 .faq-q::after {
   content: '+';
   font-size: 1.2rem;
@@ -868,10 +876,12 @@ body {
   flex-shrink: 0;
   margin-left: 12px;
 }
+
 .faq-item[open] .faq-q::after {
   transform: rotate(45deg);
   color: var(--purple);
 }
+
 .faq-a {
   font-size: 0.875rem;
   color: var(--muted);
@@ -887,11 +897,13 @@ body {
   margin-right: auto;
   padding: 0 24px 64px;
 }
+
 .internal-links-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
+
 .internal-link {
   display: inline-flex;
   align-items: center;
@@ -905,8 +917,9 @@ body {
   text-decoration: none;
   transition: background .2s, border-color .2s, transform .15s;
 }
+
 .internal-link:hover {
-  background: rgba(124,58,237,0.06);
+  background: rgba(124, 58, 237, 0.06);
   border-color: var(--purple);
   transform: translateY(-1px);
 }
